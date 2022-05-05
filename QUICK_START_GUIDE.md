@@ -9,16 +9,15 @@
 ## Setup OpenVINO™ Training Extensions
 
 1. Clone repository in the working directory by running the following:
-    ```
+    ```bash
     git clone https://github.com/openvinotoolkit/training_extensions.git
     cd training_extensions
-    ~~git checkout -b develop origin/develop~~
     git checkout develop origin/develop
     git submodule update --init --recursive
     ```
 
 2. Install prerequisites by running the following:
-   ```
+   ```bash
    sudo apt install python3-pip python3-venv
    ```
 
@@ -39,7 +38,7 @@
 4. Let's choose a task type.
    Let it be `external/mmdetection` for Object Detection task.
    ```bash
-   TASK_ALGO_DIR=./external/mmdetection/
+   export TASK_ALGO_DIR=./external/mmdetection/
    ```
    Note that we will not use the variable `TASK_ALGO_DIR` inside our scripts, we set it just to
    simplify this guide.
@@ -61,7 +60,7 @@
    for the OTE task.
    
 6. Install the failed jupyter-client.
-    ```
+    ```bash
     pip3 install jupyter-client
     ```
 
@@ -70,17 +69,17 @@
 8. Update PYTHONPATH environment variable to include the new libraries.
    Note that "path_to_ote_parent_dir" below needs to be changed to match your installation.
    
-    ```
+    ```bash
     export PYTHONPATH=$PYTHONPATH:<path_to_ote_parent_dir>/training_extensions/ote_sdk
     ```
 9. Install ote_sdk requirements.
     Move to the ote_sdk directory.
-    ```
+    ```bash
     pip3 install -r requirements.txt
     ```
 
 10. Install PyTorch.
-    ```
+    ```bash
     pip3 install torch
     ```
 
@@ -92,7 +91,7 @@
 
 ### ote find - search for model templates
    Have a look at model templates available for this virtual environment:
-   ```
+   ```bash
    ote find --root $TASK_ALGO_DIR
    ```
 
@@ -121,7 +120,7 @@
 
    These artifacts can be used by other `ote` commands: `ote export`, `ote eval`, `ote demo`.
    Let's have a look at `ote train` help. These parameters are the same for all model templates.
-   ```
+   ```bash
    ote train ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
@@ -158,7 +157,7 @@
    ```
 
    Let's have a look at `ote train` hyper parameters help. These parameters are model template specific.
-   ```
+   ```bash
    ote train ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml params --help
    ```
 
@@ -233,7 +232,7 @@
    - NNCF optimization used for trained snapshots in framework specific format
    - POT optimization used for exported model in IR format
 
-   ```
+   ```bash
    ote optimize ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
@@ -270,7 +269,7 @@
 
 ### ote eval - run evaluation of a trained model on particular dataset
    Let's have a look at `ote eval` help. These parameters are the same for all model templates.
-   ```
+   ```bash
    ote eval ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
@@ -301,7 +300,7 @@
 
 ### ote export - export a trained model to the OpenVINO format in order to efficiently run it on Intel hardware
    Let's have a look at `ote export` help. These parameters are the same for all model templates.
-   ```
+   ```bash
    ote export ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
@@ -323,7 +322,7 @@
    ```
 ### ote demo - run model inference on images, videos, webcam in order to see how it works on user's data
    Let's have a look at `ote demo` help. These parameters are the same for all model templates.
-   ```
+   ```bash
    ote demo ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
@@ -361,7 +360,7 @@
 
 ### ote deploy - create openvino.zip with self-contained python package, demo application and exported model
    Let's have a look at `ote deploy` help. These parameters are the same for all model templates.
-   ```
+   ```bash
    ote deploy ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
@@ -384,7 +383,7 @@
 
 ## OTE Jupyter Nootebooks
 One can use Jupyter notebooks or OTE CLI tools to start working with models:
-```
+```bash
 pip3 install notebook; cd ote_cli/notebooks/; jupyter notebook
 ```
 
