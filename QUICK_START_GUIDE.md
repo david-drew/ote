@@ -60,9 +60,31 @@
    from the chosen task folder is used to avoid breaking constraints
    for the OTE task.
    
-6. Update PYTHONPATH environment variable to include the new libraries.
+6. Install the failed jupyter-client.
+    ```
+    pip3 install jupyter-client
+    ```
 
-7. After `ote_cli` is installed in the virtual environment, you can use
+6. Change contraints.txt to use python-dateutil 2.8.2, instead of 2.8.1.
+
+8. Update PYTHONPATH environment variable to include the new libraries.
+   Note that "path_to_ote_parent_dir" below needs to be changed to match your installation.
+   
+    ```
+    export PYTHONPATH=$PYTHONPATH:<path_to_ote_parent_dir>/training_extensions/ote_sdk
+    ```
+9. Install ote_sdk requirements.
+    Move to the ote_sdk directory.
+    ```
+    pip3 install -r requirements.txt
+    ```
+
+10. Install PyTorch.
+    ```
+    pip3 install torch
+    ```
+
+11. After `ote_cli` is installed in the virtual environment, you can use
    `ote` command line interface described below to run
    train/eval/export/other action for templates related to the chosen task type.
 
@@ -78,19 +100,19 @@
    ```
    - id: Custom_Object_Detection_Gen3_VFNet
      name: VFNet
-     path: ./external/mmdetection/configs/ote/custom-object-detection/gen3_resnet50_VFNet/template.yaml
+     path: ./external/mmdetection/configs/custom-object-detection/gen3_resnet50_VFNet/template.yaml
      task_type: DETECTION
    - id: Custom_Object_Detection_Gen3_ATSS
      name: ATSS
-     path: ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml
+     path: ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml
      task_type: DETECTION
    - id: Custom_Object_Detection_Gen3_SSD
      name: SSD
-     path: ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_SSD/template.yaml
+     path: ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_SSD/template.yaml
      task_type: DETECTION
    - ...
    ```
-   Let's choose `./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml`
+   Let's choose `./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml`
 
 ### ote train - run training of a particular model template
    This tool trains a model on a dataset and saves results as following artifacts:
@@ -100,7 +122,7 @@
    These artifacts can be used by other `ote` commands: `ote export`, `ote eval`, `ote demo`.
    Let's have a look at `ote train` help. These parameters are the same for all model templates.
    ```
-   ote train ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
+   ote train ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
    Sample output:
@@ -212,7 +234,7 @@
    - POT optimization used for exported model in IR format
 
    ```
-   ote optimize ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
+   ote optimize ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
    Sample output:
@@ -249,7 +271,7 @@
 ### ote eval - run evaluation of a trained model on particular dataset
    Let's have a look at `ote eval` help. These parameters are the same for all model templates.
    ```
-   ote eval ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
+   ote eval ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
    Sample output:
@@ -280,7 +302,7 @@
 ### ote export - export a trained model to the OpenVINO format in order to efficiently run it on Intel hardware
    Let's have a look at `ote export` help. These parameters are the same for all model templates.
    ```
-   ote export ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
+   ote export ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
    Sample output:
@@ -302,7 +324,7 @@
 ### ote demo - run model inference on images, videos, webcam in order to see how it works on user's data
    Let's have a look at `ote demo` help. These parameters are the same for all model templates.
    ```
-   ote demo ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
+   ote demo ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
    Sample output:
@@ -340,7 +362,7 @@
 ### ote deploy - create openvino.zip with self-contained python package, demo application and exported model
    Let's have a look at `ote deploy` help. These parameters are the same for all model templates.
    ```
-   ote deploy ./external/mmdetection/configs/ote/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
+   ote deploy ./external/mmdetection/configs/custom-object-detection/gen3_mobilenetV2_ATSS/template.yaml --help
    ```
 
    Sample output:
