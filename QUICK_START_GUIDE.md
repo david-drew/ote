@@ -46,6 +46,10 @@
 5. Let's create, activate virtual environment for the chosen task, and install `ote_cli`.
    Note that the virtual environment folder may be created in any place in your system,
    but we will create it in the folder `./cur_task_venv` for convenience.
+   
+   Before proceeding, edit the $TASK_ALGO_DIR/constraints.txt file, and change the python-dateutil 
+   version requirement from 2.8.1 to 2.8.2.
+   
    ```bash
    bash $TASK_ALGO_DIR/init_venv.sh ./cur_task_venv python3.8
    source ./cur_task_venv/bin/activate
@@ -59,31 +63,29 @@
    from the chosen task folder is used to avoid breaking constraints
    for the OTE task.
    
-6. Install the failed jupyter-client.
+6. If the jupyter-client install failed (you'll see a message), install it manually.
     ```bash
     pip3 install jupyter-client
     ```
 
-6. Change contraints.txt to use python-dateutil 2.8.2, instead of 2.8.1.
-
-8. Update PYTHONPATH environment variable to include the new libraries.
+7. Update PYTHONPATH environment variable to include the new libraries.
    Note that "path_to_ote_parent_dir" below needs to be changed to match your installation.
    
     ```bash
     export PYTHONPATH=$PYTHONPATH:<path_to_ote_parent_dir>/training_extensions/ote_sdk
     ```
-9. Install ote_sdk requirements.
+8. Install ote_sdk requirements.
     Move to the ote_sdk directory.
     ```bash
     pip3 install -r requirements.txt
     ```
 
-10. Install PyTorch.
+9. Install PyTorch.
     ```bash
     pip3 install torch
     ```
 
-11. After `ote_cli` is installed in the virtual environment, you can use
+10. After `ote_cli` is installed in the virtual environment, you can use
    `ote` command line interface described below to run
    train/eval/export/other action for templates related to the chosen task type.
 
