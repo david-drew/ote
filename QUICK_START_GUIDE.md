@@ -3,6 +3,7 @@
 ## Prerequisites
 * Ubuntu 18.04 / 20.04
 * Python 3.8+
+* PyTorch
 * [CUDA Toolkit 11.1](https://developer.nvidia.com/cuda-11.1.1-download-archive) - for training on GPU
 
 ## Setup OpenVINO™ Training Extensions
@@ -11,13 +12,14 @@
     ```
     git clone https://github.com/openvinotoolkit/training_extensions.git
     cd training_extensions
-    git checkout -b develop origin/develop
+    ~~git checkout -b develop origin/develop~~
+    git checkout develop origin/develop
     git submodule update --init --recursive
     ```
 
 2. Install prerequisites by running the following:
    ```
-   sudo apt-get install python3-pip python3-venv
+   sudo apt install python3-pip python3-venv
    ```
 
 3. Search for available scripts that create python virtual environments for different task types:
@@ -57,8 +59,10 @@
    Also note that during installation of `ote_cli` the constraint file
    from the chosen task folder is used to avoid breaking constraints
    for the OTE task.
+   
+6. Update PYTHONPATH environment variable to include the new libraries.
 
-6. As soon as `ote_cli` is installed in the virtual environment, you can use
+7. After `ote_cli` is installed in the virtual environment, you can use
    `ote` command line interface described below to run
    train/eval/export/other action for templates related to the chosen task type.
 
