@@ -6,6 +6,20 @@
 * PyTorch
 * [CUDA Toolkit 11.1](https://developer.nvidia.com/cuda-11.1.1-download-archive) - for training on GPU
 
+## CUDA installation
+
+If you have CUDA installed, verify the proper version. OTE could work also without GPU. [DAVID: there's a barrier to the install if CUDA isn't already there.]
+
+1. Verify the CUDA installation is 11.1:
+```
+ls -la /usr/local | grep cuda
+```
+2. Install the CUDA 11.1 if it is needed. Follow the instructions [here](https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux)
+3. Verify the CUDA installation again, same than 1.
+4. Select the CUDA version you will need for OTE:
+```
+export CUDA_HOME=/usr/local/cuda-11.1
+
 ## Setup OpenVINO™ Training Extensions
 
 1. Clone repository in the working directory by running the following:
