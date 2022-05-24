@@ -15,7 +15,7 @@ If you have CUDA installed, verify the proper version. OTE could work also witho
 ls -la /usr/local | grep cuda
 ```
 2. Install the CUDA 11.1 if it is needed. Follow the instructions [here](https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux)
-3. Verify the CUDA installation again, same than 1.
+3. Verify the CUDA installation again, using instructions from step 1.
 4. Select the CUDA version you will need for OTE:
 ```
 export CUDA_HOME=/usr/local/cuda-11.1
