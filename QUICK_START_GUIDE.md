@@ -17,8 +17,9 @@ ls -la /usr/local | grep cuda
 2. Install the CUDA 11.1 if it is needed. Follow the instructions [here](https://developer.nvidia.com/cuda-11.1.0-download-archive?target_os=Linux)
 3. Verify the CUDA installation again, using instructions from step 1.
 4. Select the CUDA version you will need for OTE:
-```
+```bash
 export CUDA_HOME=/usr/local/cuda-11.1
+```
 
 ## Setup OpenVINO™ Training Extensions
 
